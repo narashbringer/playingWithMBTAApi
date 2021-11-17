@@ -52,24 +52,24 @@ def get_stops_and_counts(routes: typing.List[typing.Dict]):
 
 def find_route_from_a_to_b_ineficient(stops_to_lines, start, end):
     """lazy serch for path from stop a to stop b O(n^3)."""
-        trains_to_take = []
-        if start and end:
-            start_tains = stops_to_lines[start]
-            end_trains = stops_to_lines[end]
-            trains_to_take = list(set(start_tains) & set(end_trains))
-            if len(trains_to_take) == 0:
-                for traina in start_tains:
-                    for trainb in end_trains:
-                        for stops in stops_to_lines.keys():
-                            lines = stops_to_lines[stops]
-                            if traina in lines and trainb in lines:
-                                trains_to_take.append(traina)
-                                trains_to_take.append(trainb)
-                                return trains_to_take, stops
-                print(f"Error no with one train transfer or less from {stat} to {stop}.")
-                return None, None
-            return trains_to_take , None
-        elif start:
-            print("please add a end stop")
-        elif end:
-            print("please add a start stop")
+    trains_to_take = []
+    if start and end:
+        start_tains = stops_to_lines[start]
+        end_trains = stops_to_lines[end]
+        trains_to_take = list(set(start_tains) & set(end_trains))
+        if len(trains_to_take) == 0:
+            for traina in start_tains:
+                for trainb in end_trains:
+                    for stops in stops_to_lines.keys():
+                        lines = stops_to_lines[stops]
+                        if traina in lines and trainb in lines:
+                            trains_to_take.append(traina)
+                            trains_to_take.append(trainb)
+                            return trains_to_take, stops
+            print(f"Error no with one train transfer or less from {stat} to {stop}.")
+            return None, None
+        return trains_to_take , None
+    elif start:
+        print("please add a end stop")
+    elif end:
+        print("please add a start stop")
